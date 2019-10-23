@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+    kubernetes.io/ingress.class: traefik 
+  labels:
+    created-by: kubeapps
+    name: kubeapps
+  name: kubeapps
+  namespace: kubeapps
+spec:
+  rules:
+  - host: kubeapps.medogz.home
+    http:
+      paths:
+      - backend:
+          serviceName: kubeapps
+          servicePort: 80
+        path: /
+  tls: []
